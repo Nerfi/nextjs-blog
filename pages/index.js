@@ -5,8 +5,8 @@ export default function Home() {
   return (
     <div className={styles.container}>
       <Head>
-        <title>Create Next App</title>
-        <link rel="icon" href="/favicon.ico" />
+        <title>Nerfi Blog </title>
+        <link rel="icon" href="/favicon-32x32.png" />
       </Head>
 
       <main>
