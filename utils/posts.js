@@ -10,16 +10,24 @@ const blogPostDirectory = path.join(process.cwd(), "posts");
 export function getSortedPostsData() {
   // Get file names under /posts
   const fileNames = fs.readdirSync(blogPostDirectory);
+
+  //console.log(fileNames, "file names")
+  
   const allPostsData = fileNames.map((fileName) => {
     // Remove ".md" from file name to get id
     const id = fileName.replace(/\.md$/, "");
 
     // Read markdown file as string
     const fullPath = path.join(blogPostDirectory, fileName);
+
+   
     const fileContents = fs.readFileSync(fullPath, "utf8");
 
-    // Use gray-matter to parse the post metadata section
+   
+
+    // Use gray-matter to parse the post metadata (title, date) section
     const matterResult = matter(fileContents);
+
 
     // Combine the data with the id
     return {
@@ -28,8 +36,8 @@ export function getSortedPostsData() {
     };
   });
 
-  console.log(allPostsData, "all posts")
-  console.log(fileNames, "files names")
+  // console.log(allPostsData, "all posts inside function");
+  // console.log(fileNames, "files names");
   // Sort posts by date
   return allPostsData.sort((a, b) => {
     if (a.date < b.date) {
@@ -40,5 +48,56 @@ export function getSortedPostsData() {
   });
 }
 
+export function getAllPostIds() {
+  const fileNames = fs.readdirSync(blogPostDirectory);
 
-//https://nextjs.org/learn/basics/data-fetching/blog-data
+  return fileNames.map((fileName) => {
+    return {
+      params: {
+        id: fileName.replace(/\.md$/, ""),
+      },
+    };
+  });
+}
+
+//get post data
+
+export function getPostData(id) {
+  console.log(id, "id passes down")
+  const fullPath = path.join(blogPostDirectory, `${id}.md`);
+  console.log(fullPath, "getPostData full paht join ")
+  const fileContents = fs.readFileSync(fullPath, "utf8");
+  console.log(fileContents, "file contents")
+  // Use gray-matter to parse the post metadata section
+  const matterResult = matter(fileContents);
+  //combine data with id 
+  return {
+    id,
+    ...matterResult.data,
+  };
+}
+
+/*
+aqui tambien podremos hacer fetch de otro tipo de data, ahora mismo solo hemos 
+hecho un fetch de  data en nuestro file system pero tambien podemos hacer fetch 
+de datos de una API: 
+export async function getSortedPostsData() {
+  // Instead of the file system,
+  // fetch post data from an external API endpoint
+  const res = await fetch('..');
+  return res.json();
+}
+
+*/
+
+/*  en este archivo tambien podemos hacer un query de la data de un DDBB
+import someDatabaseSDK from 'someDatabaseSDK'
+
+const databaseClient = someDatabaseSDK.createClient(...)
+
+export async function getSortedPostsData() {
+  // Instead of the file system,
+  // fetch post data from a database
+  return databaseClient.query('SELECT posts...')
+}
+*/
