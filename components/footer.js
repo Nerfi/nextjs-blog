@@ -12,12 +12,9 @@ export default function Footer() {
         <h3>Nerfi Blog</h3>
         <p>Nerfi Developer — source code.</p>
         <p className={footerStyles.copyright}>
-        copyright &copy;{date()} <a href="">Nerfi´s Blog</a>
-      </p>
-
-      
+          copyright &copy;{date()} <a href="">Nerfi´s Blog</a>
+        </p>
       </div>
-     
     </footer>
   );
 }

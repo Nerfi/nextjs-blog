@@ -2,13 +2,14 @@ html,
 body {
   padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu,
-    Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
   line-height: 1.6;
   font-size: 18px;
+
 }
 
-* {
+/* * {
   box-sizing: border-box;
 }
 
@@ -24,20 +25,11 @@ a:hover {
 img {
   max-width: 100%;
   display: block;
-}
+} */
 
 /* en este archivo es donde podremos poner los selectores puros footer, img, a de nuestra app 
 ya que si lo hacemos por ejemplo en componetes/footer.module.css se queja 
 https://github.com/vercel/next.js/discussions/31705
 */
-footer{
- position: absolute;
-   bottom: 10; 
-  left: 0;
-  right: 0;
-  background: #111;
-  height: auto;
-  width: 100vw;
-  /*padding-top: 40px;*/
-  color: #fff;
-}
+
+

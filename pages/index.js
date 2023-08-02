@@ -4,7 +4,8 @@ import utilStyles from "../styles/utils.module.css";
 import { getSortedPostsData } from "../utils/posts";
 import Link from "next/link";
 import Date from "../components/date";
-
+import { BIO } from "../utils/constants";
+import ContentWrapper from "../components/contenWrapper";
 //INDEX ES EL ENTRY POINT DE NUESTRA APP, LA "/" EN EL ROUTER PARA QUE NOS ENTENDAMOS
 
 export async function getStaticProps() {
@@ -24,30 +25,39 @@ export default function Home({ allPostsData }) {
       <Head>
         <title>{siteTitle}</title>
       </Head>
+
+      {/*
+       HERO SECTIOS GOES HERE , NEEDS TO BE CREATED 
+      pd: BIO const should be in hero section
+      */}
+      <section>
+        <div>
+          <span>more content to test </span>
+          <h2>juan </h2>
+        </div>
+      </section>
+
       <section className={utilStyles.headingMd}>
-        <p>[Your Self Introduction]</p>
-        <p>
-          (This is a sample website - you’ll be building a site like this on{" "}
-          <a href="https://nextjs.org/learn">our Next.js tutorial</a>.)
-        </p>
+        <p>{BIO}</p>
       </section>
+      <ContentWrapper>
+        <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
+          <h2 className={utilStyles.headingLg}>Blog</h2>
 
-      <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
-        <h2 className={utilStyles.headingLg}>Blog</h2>
+          <ul className={utilStyles.list}>
+            {allPostsData.map(({ id, date, title }) => (
+              <li className={utilStyles.listItem} key={id}>
+                <Link href={`/posts/${id}`}> {title} </Link>
+                <br />
 
-        <ul className={utilStyles.list}>
-          {allPostsData.map(({ id, date, title }) => (
-            <li className={utilStyles.listItem} key={id}>
-              <Link href={`/posts/${id}`}> {title} </Link>
-              <br />
-
-              <small className={utilStyles.lightText}>
-                <Date dateString={date} />
-              </small>
-            </li>
-          ))}
-        </ul>
-      </section>
+                <small className={utilStyles.lightText}>
+                  <Date dateString={date} />
+                </small>
+              </li>
+            ))}
+          </ul>
+        </section>
+      </ContentWrapper>
     </Layout>
   );
 }

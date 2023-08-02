@@ -4,6 +4,7 @@ import styles from "./layout.module.css";
 import utilStyles from "../styles/utils.module.css";
 import Link from "next/link";
 import Footer from "./footer";
+import Navigation from "./nav";
 
 const name = "Nerfi";
 export const siteTitle = "Nerfis Blog";
@@ -26,8 +27,10 @@ export default function Layout({ children, home }) {
         <meta name="twitter:card" content="summary_large_image" />
       </Head>
 
-      <header className={styles.header}>
-        {home ? (
+      <header>
+        <Navigation />
+
+        {/* {home ? (
           <>
             <Image
               priority
@@ -57,15 +60,18 @@ export default function Layout({ children, home }) {
               </Link>
             </h2>
           </>
-        )}
+        )} */}
       </header>
+
       <main>{children}</main>
+
       {!home && (
         <div className={styles.backToHome}>
           <Link href="/">← Back to home</Link>
         </div>
       )}
-      <Footer/>
+
+       <Footer /> 
     </div>
   );
 }
