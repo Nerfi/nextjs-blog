@@ -1,0 +1,30 @@
+.footerContent {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+}
+
+.footerContent h3 {
+  font-size: 2.1rem;
+  font-weight: 500;
+  text-transform: capitalize;
+  line-height: 3rem;
+  font-family: "Borel", cursive;
+}
+
+.footerContent p {
+  max-width: 500px;
+  margin: 10px auto;
+  line-height: 28px;
+  font-size: 14px;
+  color: #cacdd2;
+  font-family: "Borel", cursive;
+}
+
+.copyright {
+  margin-left: 140px;
+  border: solid rgb(7, 2, 2) 1px;
+  font-family: "Borel", cursive;
+}

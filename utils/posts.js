@@ -73,6 +73,22 @@ export function getAllPostIds() {
   });
 }
 
+/* tbn podemos chacer fetch de una fuente externa a nuestro field system 
+export async function getAllPostIds() {
+  // Instead of the file system,
+  // fetch post data from an external API endpoint
+  const res = await fetch('..');
+  const posts = await res.json();
+  return posts.map((post) => {
+    return {
+      params: {
+        id: post.id,
+      },
+    };
+  });
+}
+*/
+
 //get post data
 
 export async function getPostData(id) {
